@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       // Adjust the delay as needed (in milliseconds).
       setTimeout(() => {
         chrome.tabs.remove(tab.id);
-      }, 5000);
+      }, 3000);
     });
   }
 });
