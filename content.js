@@ -36,8 +36,7 @@ document.addEventListener("mouseup", (event) => {
         btn.innerHTML = `<img src="${chrome.runtime.getURL('whatsapp.png')}" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">Send WhatsApp`;
 
         btn.addEventListener("click", () => {
-          const whatsAppUrl = `https://wa.me/${phoneNumber}`;
-          window.open(whatsAppUrl, "_blank");
+          chrome.runtime.sendMessage({ action: "openWhatsApp", phoneNumber: phoneNumber });
           removeButton();
         });
 

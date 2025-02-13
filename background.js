@@ -19,3 +19,15 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.tabs.create({ url: whatsAppUrl });
   }
 });
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.action === "openWhatsApp") {
+    const url = `https://wa.me/${msg.phoneNumber}`;
+    chrome.tabs.create({ url: url }, (tab) => {
+      // Adjust the delay as needed (in milliseconds).
+      setTimeout(() => {
+        chrome.tabs.remove(tab.id);
+      }, 5000);
+    });
+  }
+});
