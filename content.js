@@ -6,6 +6,9 @@ function removeButton() {
 }
 
 document.addEventListener("mouseup", (event) => {
+  // Don't run if the mouseup occurred on our button.
+  if (event.target.closest("#whatsapp-link-button")) return;
+
   setTimeout(() => {
     const selectionText = window.getSelection().toString().trim();
     removeButton();
@@ -15,9 +18,9 @@ document.addEventListener("mouseup", (event) => {
       if (isValidPhone) {
         const btn = document.createElement("button");
         btn.id = "whatsapp-link-button";
-        // Prevent website styles from interfering
+        // Prevent website styles from interfering.
         btn.style.all = "unset";
-        // Add our custom styles
+        // Add our custom styles.
         btn.style.position = "absolute";
         btn.style.top = event.pageY + 5 + "px";
         btn.style.left = event.pageX + 5 + "px";
@@ -27,12 +30,11 @@ document.addEventListener("mouseup", (event) => {
         btn.style.color = "white";
         btn.style.borderRadius = "4px";
         btn.style.cursor = "pointer";
-        // Ensure the button uses a readable font
         btn.style.fontFamily = "Arial, sans-serif";
         btn.style.fontSize = "14px";
-        // Create content with icon; tweak vertical alignment for a better look
+        // Create content with icon for better alignment.
         btn.innerHTML = `<img src="${chrome.runtime.getURL('whatsapp.png')}" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">Send WhatsApp`;
-        
+
         btn.addEventListener("click", () => {
           const whatsAppUrl = `https://wa.me/${phoneNumber}`;
           window.open(whatsAppUrl, "_blank");
