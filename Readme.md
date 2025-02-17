@@ -62,7 +62,3 @@ Contributions are welcome! Fork the repository, make your changes, and submit a 
 ## License
 
 [MIT License](LICENSE)
-
-## Homepage
-
-Visit the [GitHub Repository Homepage](https://github.com/your-github-username/WhatsApp-Link-Generator-Extension) for more details, updates, and to report issues.
